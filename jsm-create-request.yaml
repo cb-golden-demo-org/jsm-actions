@@ -4,19 +4,19 @@ name: jsm-create-request
 description: Create a Jira Service Management customer request
 
 inputs:
-  jsm_url:
+  jsm-url:
     description: Base URL of your Jira site (e.g. https://yourcompany.atlassian.net)
     required: true
-  jsm_email:
+  jsm-email:
     description: Atlassian account email used for API authentication
     required: true
-  jsm_token:
+  jsm-token:
     description: Atlassian API token (store as a secret, never hardcode)
     required: true
-  service_desk_id:
+  service-desk-id:
     description: Numeric ID of the target service desk (GET /rest/servicedeskapi/servicedesk to list)
     required: true
-  request_type_id:
+  request-type-id:
     description: Numeric ID of the request type (GET /rest/servicedeskapi/servicedesk/{id}/requesttype)
     required: true
   summary:
@@ -47,8 +47,8 @@ runs:
 
         PAYLOAD=$(cat <<EOF
         {
-          "serviceDeskId": "${{ inputs.service_desk_id }}",
-          "requestTypeId": "${{ inputs.request_type_id }}",
+          "serviceDeskId": "${{ inputs.service-desk-id }}",
+          "requestTypeId": "${{ inputs.request-type-id }}",
           "requestFieldValues": {
             "summary": "${{ inputs.summary }}",
             "description": "${{ inputs.description }}"
